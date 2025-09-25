@@ -2,17 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: files-rsrv-ingress
-  annotations:
-    cert-manager.io/cluster-issuer: "cluster-issuer"
-
 spec:
-  tls:
-    - hosts:
-      - filesrsrv.10.201.2.221.nip.io
-      secretName: files-rsrv-tls
-
   rules:
-    - host: filesrsrv.10.201.2.221.nip.io
+    - host: filesrsrv.ct.int.ingv.it
       http:
         paths:
           - path: /
