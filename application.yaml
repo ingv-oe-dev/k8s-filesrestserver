@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: filesrestserver-application
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/ingv-oe-dev/k8s-filesrestserver.git
+    targetRevision: main
+    path: filerestserver/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dataprovider
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
