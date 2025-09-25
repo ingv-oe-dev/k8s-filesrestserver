@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: dataprovider
+  name: files-rsrv-config
+  labels:
+    app: files-rsrv-config
+data:
+  filesRestServer.ini: |
+    [ProviderParam]
+    ProviderName = SUDSRest_Server
+    providerPort = 9095
+    providerQSize = 10
+    fileExt = dmx
+    dataType = SUDS
+    providerDataPath = /repositoryacquisition/Permanent/Seismic/
