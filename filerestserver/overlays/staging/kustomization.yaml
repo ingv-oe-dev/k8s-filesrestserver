@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base
+
 namespace: dataprovider-staging
 patches:
   - path: replicas.yaml

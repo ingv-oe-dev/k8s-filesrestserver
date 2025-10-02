@@ -4,18 +4,19 @@ metadata:
   name: files-rsrv-ingress
   annotations:
     cert-manager.io/cluster-issuer: "cluster-issuer"
+    traefik.ingress.kubernetes.io/router.middlewares: dataprovider-staging-strip-files-prefix@kubernetescrd
 
 spec:
   tls:
     - hosts:
-      - filesrsrv.10.201.2.221.nip.io
+      - dataprovider.10.201.2.221.nip.io
       secretName: files-rsrv-tls
 
   rules:
-    - host: filesrsrv.10.201.2.221.nip.io
+    - host: dataprovider.10.201.2.221.nip.io
       http:
         paths:
-          - path: /
+          - path: /files
             pathType: Prefix
             backend:
               service:
